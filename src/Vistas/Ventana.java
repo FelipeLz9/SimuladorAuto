@@ -5,10 +5,16 @@
 package Vistas;
 
 import Elementos.*;
+import java.awt.Image;
+import java.awt.Panel;
 import java.io.File;
 import java.io.IOException;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
@@ -26,6 +32,21 @@ public class Ventana extends javax.swing.JFrame {
      */
     public Ventana() {
         initComponents();
+        removeBgButton();
+        btnEncender.setIcon(setIcono("/Imagenes/start.png",btnEncender ));
+        btnEncender.setPressedIcon(setIconoPresionado("/Imagenes/start.png", btnEncender, 40, 40));
+        
+        btnApagar.setIcon(setIcono("/Imagenes/apagar.png",btnEncender ));
+        btnApagar.setPressedIcon(setIconoPresionado("/Imagenes/apagar.png", btnEncender, 40, 40));
+        
+        btnAcelerar.setIcon(setIcono("/Imagenes/acelerador.png", btnAcelerar));
+        btnAcelerar.setPressedIcon(setIconoPresionado("/Imagenes/acelerador.png", btnAcelerar, 40, 40)); 
+        
+        btnFrenar.setIcon(setIcono("/Imagenes/freno.png", btnFrenar));
+        btnFrenar.setPressedIcon(setIconoPresionado("/Imagenes/freno.png", btnFrenar, 40, 40));
+        
+        JBView.setIcon(setIcono("/Imagenes/view.png", JBView));
+        
     }
 
     /**
@@ -45,38 +66,41 @@ public class Ventana extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         btnAbrirArchivo = new javax.swing.JButton();
         lTxt = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        txtLlantas = new javax.swing.JTextField();
+        txtMotor = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        JBView = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnEncender.setText("Encender");
         btnEncender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEncenderActionPerformed(evt);
             }
         });
 
-        btnApagar.setText("Apagar");
         btnApagar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnApagarActionPerformed(evt);
             }
         });
 
-        btnAcelerar.setText("Acelerar");
         btnAcelerar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAcelerarActionPerformed(evt);
             }
         });
 
-        btnFrenar.setText("Frenar");
         btnFrenar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFrenarActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Velocidad");
+        jLabel1.setText("Magnitud(km/h)");
 
         btnAbrirArchivo.setText("Seleccionar archivo de texto");
         btnAbrirArchivo.addActionListener(new java.awt.event.ActionListener() {
@@ -87,110 +111,238 @@ public class Ventana extends javax.swing.JFrame {
 
         lTxt.setText(" ");
 
+        jLabel2.setText("Llantas:");
+
+        jLabel3.setText("Motor:");
+
+        txtLlantas.setEditable(false);
+
+        txtMotor.setEditable(false);
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel4.setText("Velocidad (km/h)");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Componentes del vehiculo");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JBView, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addGap(543, 543, 543)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(189, 189, 189)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(txtVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnEncender)
-                            .addComponent(btnAcelerar))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnFrenar)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnApagar)
-                                .addGap(111, 111, 111)
-                                .addComponent(lTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(110, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAbrirArchivo)
-                .addGap(54, 54, 54))
+                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txtMotor, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(122, 122, 122)
+                                .addComponent(btnAcelerar, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(102, 102, 102)
+                                .addComponent(btnFrenar))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(258, 258, 258)
+                                .addComponent(btnEncender, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(btnAbrirArchivo)
+                                        .addGap(54, 54, 54))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel4)
+                                            .addComponent(lTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(24, 24, 24)))))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtLlantas, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(txtVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1))
+                        .addGap(296, 296, 296))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(JBView, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(lTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnApagar, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(btnEncender, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(txtLlantas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(14, 14, 14)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
+                        .addGap(17, 17, 17)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnEncender)
-                            .addComponent(btnApagar)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(lTxt)))
+                            .addComponent(jLabel3)
+                            .addComponent(txtMotor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnFrenar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnAcelerar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(49, 49, 49)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAcelerar)
-                    .addComponent(btnFrenar)
-                    .addComponent(txtVelocidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(65, 65, 65)
                 .addComponent(btnAbrirArchivo)
-                .addContainerGap(91, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private Icon setIcono(String url, JButton boton){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int ancho = boton.getWidth();
+        int alto = boton.getHeight();
+        ImageIcon icono = new  ImageIcon(icon.getImage().getScaledInstance(ancho, alto, Image.SCALE_DEFAULT));
+        
+        return icono;
+    }
+    
+  
+    
+    public Icon setIconoPresionado(String url, JButton boton, int ancho, int altura){
+        ImageIcon icon = new ImageIcon(getClass().getResource(url));
+        int width = boton.getWidth()- ancho;
+        int height = boton.getWidth()- altura;
+        
+        ImageIcon icono = new ImageIcon(icon.getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+        
+        return icono;
+         
+    }
+    
+    public void removeBgButton(){
+        btnEncender.setOpaque(false);
+        btnEncender.setContentAreaFilled(false);
+        btnEncender.setBorderPainted(false);
+        
+        JBView.setOpaque(false);
+        JBView.setContentAreaFilled(false);
+        JBView.setBorderPainted(false);
+        
+        
+        btnApagar.setOpaque(false);
+        btnApagar.setContentAreaFilled(false);
+        btnApagar.setBorderPainted(false);
+                
+        btnAcelerar.setOpaque(false);
+        btnAcelerar.setContentAreaFilled(false);
+        btnAcelerar.setBorderPainted(false);
+        
+        btnFrenar.setOpaque(false);
+        btnFrenar.setContentAreaFilled(false);
+        btnFrenar.setBorderPainted(false);
+    }
+    
+    
     private void btnEncenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEncenderActionPerformed
-        try{
+       if(taller.getVehiculo() == null){
+           JOptionPane.showMessageDialog(this, new VehiculoNoExisteException().getMessage());
+       }else{
+           try{
             taller.getVehiculo().encender();
             lTxt.setText(taller.getVehiculo().getVelocidad()+"");
             JOptionPane.showMessageDialog(this, "Vehiculo encendido");
         }catch(VehiculoEncendidoException e){
             JOptionPane.showMessageDialog(this, e.getMessage());
         }
+       }
+        
     }//GEN-LAST:event_btnEncenderActionPerformed
 
     private void btnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnApagarActionPerformed
-        try{
-            taller.getVehiculo().apagar();
-            lTxt.setText("");
-            JOptionPane.showMessageDialog(this, "Vehiculo apagado");
-        }catch(VehiculoApagadoException e){
-            JOptionPane.showMessageDialog(this, e.getMessage());
-        }
+       if(taller.getVehiculo() == null){
+           JOptionPane.showMessageDialog(this, new VehiculoNoExisteException().getMessage());
+       }else{
+           try{
+                taller.getVehiculo().apagar();
+                lTxt.setText("");
+                JOptionPane.showMessageDialog(this, "Vehiculo apagado");
+            }catch(VehiculoApagadoException e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+            }catch (VehiculoAccidentadoException e1){
+                JOptionPane.showMessageDialog(this, e1.getMessage());
+                lTxt.setText("");
+            }
+       }
     }//GEN-LAST:event_btnApagarActionPerformed
 
     private void btnAcelerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAcelerarActionPerformed
-        try{
-            int velocidadAceleracion = velocidadAceleracion = Integer.parseInt(txtVelocidad.getText());
-            taller.getVehiculo().acelerar(velocidadAceleracion);
-            lTxt.setText(taller.getVehiculo().getVelocidad()+"");
-            JOptionPane.showMessageDialog(this, "Vehiculo acelerado a: "+ taller.getVehiculo().getVelocidad());
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Ingrese el formato correcto.");
-        }catch(VehiculoApagadoException e1){
-            JOptionPane.showMessageDialog(this, "El vehiculo se encuentra apagado, por lo tanto no se puede acelerar.");
+        if(taller.getVehiculo() == null){
+           JOptionPane.showMessageDialog(this, new VehiculoNoExisteException().getMessage());
+        }else{
+            try{
+                int velocidadAceleracion = velocidadAceleracion = Integer.parseInt(txtVelocidad.getText());
+                taller.getVehiculo().acelerar(velocidadAceleracion);
+                lTxt.setText(taller.getVehiculo().getVelocidad()+"");
+                JOptionPane.showMessageDialog(this, "Vehiculo acelerado a: "+ taller.getVehiculo().getVelocidad());
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Ingrese el formato correcto.");
+            }catch(VehiculoApagadoException e1){
+                JOptionPane.showMessageDialog(this, "El vehiculo se encuentra apagado, por lo tanto no se puede acelerar.");
+            }catch(VehiculoAccidentadoException e2){
+                JOptionPane.showMessageDialog(this, e2.getMessage());
+            }
+            txtVelocidad.setText("");
         }
-        txtVelocidad.setText("");
     }//GEN-LAST:event_btnAcelerarActionPerformed
 
     private void btnFrenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFrenarActionPerformed
-        try{
-            int velocidadFrenado = Integer.parseInt(txtVelocidad.getText());
-            taller.getVehiculo().frenar(velocidadFrenado);
-            lTxt.setText(taller.getVehiculo().getVelocidad()+"");
-            JOptionPane.showMessageDialog(this, "Vehiculo frenado a: "+ taller.getVehiculo().getVelocidad());
-        }catch(NumberFormatException e){
-            JOptionPane.showMessageDialog(this, "Ingrese el formato correcto.");
-        }catch(VehiculoApagadoException e1){
-            JOptionPane.showMessageDialog(this, "El vehiculo se encuentra apagado, por lo tanto no se puede frenar.");
-        }catch(VehiculoDetenidoException e2){
-            JOptionPane.showMessageDialog(this, e2.getMessage());
+        if(taller.getVehiculo() == null){
+           JOptionPane.showMessageDialog(this, new VehiculoNoExisteException().getMessage());
+        }else{
+           try{
+                int velocidadFrenado = Integer.parseInt(txtVelocidad.getText());
+                taller.getVehiculo().frenar(velocidadFrenado);
+                lTxt.setText(taller.getVehiculo().getVelocidad()+"");
+                JOptionPane.showMessageDialog(this, "Vehiculo frenado a: "+ taller.getVehiculo().getVelocidad());
+            }catch(NumberFormatException e){
+                JOptionPane.showMessageDialog(this, "Ingrese el formato correcto.");
+            }catch(VehiculoApagadoException e1){
+                JOptionPane.showMessageDialog(this, "El vehiculo se encuentra apagado, por lo tanto no se puede frenar.");
+            }catch(VehiculoDetenidoException e2){
+                JOptionPane.showMessageDialog(this, e2.getMessage());
+            }catch(VehiculoPatinandoException e){
+                JOptionPane.showMessageDialog(this, e.getMessage());
+                lTxt.setText(taller.getVehiculo().getVelocidad()+"");
+            }
+            txtVelocidad.setText("");
         }
-        txtVelocidad.setText("");
     }//GEN-LAST:event_btnFrenarActionPerformed
 
     private void btnAbrirArchivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAbrirArchivoActionPerformed
@@ -204,23 +356,65 @@ public class Ventana extends javax.swing.JFrame {
         
         try {
             taller.getLectorArchivoTexto().leerArchivo(file);
+            JOptionPane.showMessageDialog(this, "Archivo abierto");
         } catch (IOException ex) {
             JOptionPane.showMessageDialog(this, "El arhivo seleccionado no se puede abrir.");
+        } catch (NullPointerException e){
+        }catch (FormatoNoValidoException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
+        }
+        try{
+            crearVehiculo();
+            llenarTxtFieldMotorLlanta();
+        }catch (FormatoNoValidoException e){
+            JOptionPane.showMessageDialog(this, e.getMessage());
         }
     }//GEN-LAST:event_btnAbrirArchivoActionPerformed
+    
+    public void llenarTxtFieldMotorLlanta(){
+        if(taller.getVehiculo().getLlanta() instanceof LlantaBuena){
+            txtLlantas.setText("Buenas");
+        }else if(taller.getVehiculo().getLlanta() instanceof LlantaBonita){
+            txtLlantas.setText("Bonitas");
+        }else if(taller.getVehiculo().getLlanta() instanceof LlantaBarata){
+            txtLlantas.setText("Baratas");
+        }
+        if(taller.getVehiculo().getMotor() instanceof Motor1000){
+            txtMotor.setText("1000 cc");
+        }else if(taller.getVehiculo().getMotor() instanceof Motor2000){
+            txtMotor.setText("2000 cc");
+        }else if(taller.getVehiculo().getMotor() instanceof Motor3000){
+            txtMotor.setText("3000 cc");
+        }
+    }
+    
+    public void crearVehiculo() throws FormatoNoValidoException{
+        try{
+            this.taller.setVehiculo();
+        }catch (FormatoNoValidoException e){
+            throw e;
+        }
+    }
     
     public void setTaller(Taller taller){
         this.taller = taller;
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JBView;
     private javax.swing.JButton btnAbrirArchivo;
     private javax.swing.JButton btnAcelerar;
     private javax.swing.JButton btnApagar;
     private javax.swing.JButton btnEncender;
     private javax.swing.JButton btnFrenar;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel lTxt;
+    private javax.swing.JTextField txtLlantas;
+    private javax.swing.JTextField txtMotor;
     private javax.swing.JTextField txtVelocidad;
     // End of variables declaration//GEN-END:variables
 }
